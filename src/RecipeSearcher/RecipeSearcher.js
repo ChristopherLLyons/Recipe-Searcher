@@ -3,6 +3,11 @@ import axios from 'axios';
 
 class RecipeSearcher extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = { recipes: [] }
+    }
+
     getRandomRecipe = () => {
         axios({
             /* We can configure everything we need to about the HTTP request in here */
@@ -17,9 +22,41 @@ class RecipeSearcher extends Component {
         })
     }
 
+    getRecipeByName = (name) => {
+        axios({
+            method: 'GET',
+            url: 'https://www.themealdb.com/api/json/v1/1/search.php',
+            params: {
+                s: name
+            }
+        })
+        .then(function(response) {
+            console.log(response);
+        })
+        .catch(function(error) {
+            console.log(error);
+        })
+    }
+
+    getRecipeByLetter = (letter) => {
+        axios({
+            method: 'GET',
+            url: 'https://www.themealdb.com/api/json/v1/1/search.php',
+            params: {
+                f: letter
+            }
+        })
+        .then(function(response) {
+            console.log(response);
+        })
+        .catch(function(error)  {
+            console.log(error);
+        })
+    }
+
     render() {
 
-        this.getRandomRecipe();
+        this.getRecipeByLetter('L');
 
         return (
             <div>
