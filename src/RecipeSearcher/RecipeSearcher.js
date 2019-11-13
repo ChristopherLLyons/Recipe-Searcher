@@ -72,7 +72,11 @@ class RecipeSearcher extends Component {
     render() {
         return (
             <div>
-                <Header />
+                <Header 
+                    randomRecipeHandler={this.getRandomRecipe}
+                    recipesByLetterHandler={this.getRecipeByLetter}
+                    recipesByNameHandler={this.getRecipeByName}
+                />
                 <RecipeList  recipes={this.state.recipes}/>
             </div>
         );
